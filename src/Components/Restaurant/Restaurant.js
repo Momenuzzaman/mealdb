@@ -18,13 +18,16 @@ const Restaurant = () => {
             const getDbMeal = getDb();
             const savedDb = [];
             for(const mealId in getDbMeal){
-                const meal = meals.find(ml => ml.id === mealId);
+                const meal = meals.find(ml => ml.idMeal === mealId);
+                let quantity = getDbMeal[mealId];
+                meal.quantity = quantity;
                 savedDb.push(meal);
             }
             setCart(savedDb);
         }
     },[meals]);
     const addFood = meal => {
+        meal.quantity = 1;
         const newCart = [...cart,meal]
         setCart(newCart);
         addToDb(meal.idMeal)
