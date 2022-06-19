@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import Meal from '../Meal/Meal';
 import "./Restaurant.css";
 const Restaurant = () => {
     const [meals,setMeal] = useState([]);
@@ -12,7 +13,9 @@ const Restaurant = () => {
     return (
         <div className='restaurant-container'>
             <div className='meal-container'>
-                <h1>this is meals</h1>
+                {
+                    meals.map(meal => <Meal meal = {meal}></Meal>)
+                }
             </div>
             <div className='order-container'>
                 <h1>this is order</h1>

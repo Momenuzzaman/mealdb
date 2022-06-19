@@ -1,4 +1,11 @@
 .restaurant-container{
     display:grid;
     grid-template-columns: 3fr 1fr;
+
+} 
+.meal-container{
+    display:grid;
+    grid-template-columns: repeat(3,1fr);
+    margin-right: 30px;
+    border-right: 1px solid lightgray;
 }
