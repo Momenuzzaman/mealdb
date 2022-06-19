@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import Cart from "../Cart/Cart";
-import { addToDb } from "../dataBase";
+import { addToDb, getDb } from "../dataBase";
 import Meal from '../Meal/Meal';
 import "./Restaurant.css";
 const Restaurant = () => {
@@ -13,6 +13,17 @@ const Restaurant = () => {
         .then(data => setMeal(data.meals))
     },[]);
 
+    useEffect(() =>{
+        if(meals.length){
+            const getDbMeal = getDb();
+            const savedDb = [];
+            for(const mealId in getDbMeal){
+                const meal = meals.find(ml => ml.id === mealId);
+                savedDb.push(meal);
+            }
+            setCart(savedDb);
+        }
+    },[meals]);
     const addFood = meal => {
         const newCart = [...cart,meal]
         setCart(newCart);
@@ -31,7 +42,7 @@ const Restaurant = () => {
                 }
             </div>
             <div className='order-container'>
-               <Cart cart={cart}></Cart>
+                <Cart cart={cart}></Cart>
             </div>
         </div>
     );

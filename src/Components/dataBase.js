@@ -6,16 +6,17 @@ const addToDb = item =>{
     else{
         db[item] = 1;
     }
-   setDb(db);
+    setDb(db);
 }
 
 const setDb = db => {
     const dbJSON = JSON.stringify(db);
-   localStorage.setItem('meal',dbJSON);
+    localStorage.setItem('meal',dbJSON);
 }
 
 const getDb= () => {
-    const savedDb = localStorage.getItem('meal');
-    return savedDb ? savedDb.parse(savedDb) : savedDb = {}; 
+    let savedDb = localStorage.getItem('meal');
+    return savedDb ? JSON.parse(savedDb) : {}; 
 }
 export { addToDb, getDb, setDb };
+
