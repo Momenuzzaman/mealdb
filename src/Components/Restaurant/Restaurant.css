@@ -6,6 +6,8 @@
 .meal-container{
     display:grid;
     grid-template-columns: repeat(3,1fr);
-    margin-right: 30px;
-    border-right: 1px solid lightgray;
+    margin-right: 30px
+}
+.order-container{
+    text-align:center;
 }

@@ -6,6 +6,7 @@ import './Meal.css';
 
 function GroupExample(props) {
     const {strMealThumb,strMeal,strInstructions} = props.meal;
+    const {addFood,meal} = props
     return (
         <CardGroup >
         <Card className='card'>
@@ -17,7 +18,7 @@ function GroupExample(props) {
             </Card.Text>
             </Card.Body>
             <Card.Footer>
-            <Button variant="info">place Order</Button>{' '}
+            <Button onClick={()=>addFood(meal)} variant="info">place Order </Button>
             </Card.Footer>
         </Card>
         </CardGroup>
